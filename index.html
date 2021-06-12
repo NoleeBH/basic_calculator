@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Calculadora</title>
+</head>
+<body>
+  <div>
+    <h1>Calculadora</h1>
+    <label>ingrese primer numero</label>
+    <input type="number" id="primerNumero" /><br />
+    <label>Ingrese segundo numero</label>
+    <input type="number" id="segundoNumero" /><br />
+    <select id="selectOption">
+      <optgroup label="elige la opcio">
+        <option value="1">suma</option>
+        <option value="2">resta</option>
+        <option value="3">multiplicar</option>
+        <option value="4">dividir</option>
+      </optgroup>
+    </select><br />
+
+    <input
+      type="button"
+      id="buttonText"
+      onclick="calcular()"
+      value="CALCULAR"
+    />
+    <input type="text" id="resultado" />
+  </div>
+</body>
+<script>
+  function calcular() {
+    var operationOption = document.getElementById("selectOption").value;
+
+    var primerNumero = parseInt(document.getElementById("primerNumero").value);
+    var segundoNumero = parseInt(
+      document.getElementById("segundoNumero").value
+    );
+
+    if (operationOption == 1) {
+      var resultado = primerNumero + segundoNumero;
+    }
+    if (operationOption == 2) {
+      var resultado = primerNumero - segundoNumero;
+    }
+    if (operationOption == 3) {
+      var resultado = primerNumero * segundoNumero;
+    }
+    if (operationOption == 4) {
+        if(segundoNumero==0){
+            var resultado="indefinido"
+        }else{
+            var resultado = primerNumero / segundoNumero;
+        }
+      
+    }
+
+    document.getElementById("resultado").value = resultado;
+  }
+</script>
+</html>

@@ -3,61 +3,47 @@
 <head> 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Calculadora</title>
+<title>Calculadora html-css-js</title>
 </head>
 <body>
-  <div>
     <h1>Calculadora</h1>
-    <label>ingrese primer numero</label>
-    <input type="number" id="primerNumero" /><br />
-    <label>Ingrese segundo numero</label>
-    <input type="number" id="segundoNumero" /><br />
-    <select id="selectOption">
-      <optgroup label="elige la opcio">
-        <option value="1">suma</option>
-        <option value="2">resta</option>
-        <option value="3">multiplicar</option>
-        <option value="4">dividir</option>
-      </optgroup>
-    </select><br />
+    <form name="calculator" id="">
 
-    <input
-      type="button"
-      id="buttonText"
-      onclick="calcular()"
-      value="CALCULAR"
-    />
-    <input type="text" id="resultado" />
-  </div>
+    <div id="pantalla">
+      <input type="textfield" id="resultadoHTML" value="">
+      <label id="mensaje"></label>
+    </div>
+    <div id="numeros">
+      <input type="button" value="1" onclick="ingresar(1)">
+      <input type="button" value="2" onclick="ingresar(2)">
+      <input type="button" value="3" onclick="ingresar(3)">
+      <input type="button" value="4" onclick="ingresar(4)">
+      <input type="button" value="5" onclick="ingresar(5)">
+      <input type="button" value="6" onclick="ingresar(6)">
+      <input type="button" value="7" onclick="ingresar(7)">
+      <input type="button" value="8" onclick="ingresar(8)">
+      <input type="button" value="9" onclick="ingresar(9)">
+      <input type="button" value="0" onclick="ingresar(0)">
+    </div>
+    <div id="operadores">
+      <input type="button" value="+" onclick="operador1('+')">
+      <input type="button" value="-" onclick="operador1('-')">
+      <input type="button" value="*" onclick="operador1('*')">
+      <input type="button" value="/" onclick="operador1('/')">
+      <input type="button" value="(" onclick="parentesis1('(')">
+      <input type="button" value=")" onclick="parentesis1(')')">
+
+      <!--<input type="button" value="^" onclick="ingresar('^')">
+      <input type="button" value="√" onclick="ingresar('√')">-->
+      <input type="button" value="." onclick="punto('.')">
+      <input type="button" value="=" onclick="calcular()">
+      <input type="button" value="C" onclick="limpiar()">
+      <input type="button" value="←" onclick="borrarUno()">
+
+
+
+    </div>
+    </form>
 </body>
-<script>
-  function calcular() {
-    var operationOption = document.getElementById("selectOption").value;
-
-    var primerNumero = parseInt(document.getElementById("primerNumero").value);
-    var segundoNumero = parseInt(
-      document.getElementById("segundoNumero").value
-    );
-
-    if (operationOption == 1) {
-      var resultado = primerNumero + segundoNumero;
-    }
-    if (operationOption == 2) {
-      var resultado = primerNumero - segundoNumero;
-    }
-    if (operationOption == 3) {
-      var resultado = primerNumero * segundoNumero;
-    }
-    if (operationOption == 4) {
-        if(segundoNumero==0){
-            var resultado="indefinido"
-        }else{
-            var resultado = primerNumero / segundoNumero;
-        }
-      
-    }
-
-    document.getElementById("resultado").value = resultado;
-  }
-</script>
+<script src="app.js"></script>
 </html>

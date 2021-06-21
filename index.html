@@ -1,49 +1,80 @@
 <!DOCTYPE html>
-<html lang="en">
-<head> 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>Calculadora html-css-js</title>
-</head>
-<body>
-    <h1>Calculadora</h1>
-    <form name="calculator" id="">
+<html">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <title>Calculator-Calculadora</title>
+    <script src="js/css-dynamic.js"></script>
+  </head>
+  <body id="body1">
+    <div class="wrapper-colors">
+      <input type="button" id="color-button1" onclick="colorDiv('#008080')" />
+      <input type="button" id="color-button2" onclick="colorDiv('#796540')" />
+      <input type="button" id="color-button3" onclick="colorDiv('#3385AF')" />
+      <input type="button" id="color-button4" onclick="colorDiv('#3F53E0')" />
+      <input type="button" id="color-button5" onclick="colorDiv('#3c3c3d')" />
+      <input type="button" id="color-button6" onclick="colorDiv('#30AB4C')" />
+      <input type="button" id="color-button7" onclick="colorDiv('#800000')" />
+      <input type="button" id="color-button8" onclick="colorDiv('#EC99E4')" />
+      <input type="button" id="color-button9" onclick="colorDiv('#FF00FF')" />
+      <input type="button" id="color-button10" onclick="colorDiv('#800080')" />
+  </div>
+    <h1 id="title">Calculator</h1>
+    <div id="calculator">
+        <div class="screen">
+        <input disabled type="textfield" id="equation-html" value="" />
 
-    <div id="pantalla">
-      <input type="textfield" id="resultadoHTML" value="">
-      <label id="mensaje"></label>
+        <input type="button" id="button-previous" value="↶" onclick="previouResult()" /> 
+        <input disabled type="textfield" id="result-html" value="" />
+     
+      </div>
+      <label id="menssage-parenthesis"></label>
+      <div class="wrapper-keyboard">
+        
+        <input type="button" value="(" onclick="parenthesis('(')" />
+        <input type="button" value=")" onclick="parenthesis(')')" />
+        <input type="button" value="C" onclick="deleteOne()" />
+        <input type="button" value="+" onclick="mathematicalOperator('+')" />
+
+        <input type="button" value="1" onclick="enterNumber(1)" />
+        <input type="button" value="2" onclick="enterNumber(2)" />
+        <input type="button" value="3" onclick="enterNumber(3)" />
+        <input type="button" value="-" onclick="mathematicalOperator('-')" />
+
+        <input type="button" value="4" onclick="enterNumber(4)" />
+        <input type="button" value="5" onclick="enterNumber(5)" />
+        <input type="button" value="6" onclick="enterNumber(6)" />
+        <input type="button" value="*" onclick="mathematicalOperator('*')" />
+
+        <input type="button" value="7" onclick="enterNumber(7)" />
+        <input type="button" value="8" onclick="enterNumber(8)" />
+        <input type="button" value="9" onclick="enterNumber(9)" />
+        <input type="button" value="/" onclick="mathematicalOperator('/')" />
+
+        <input type="button" value="." onclick="enterPoint('.')" />
+        <input type="button" value="0" onclick="enterNumber(0)" />
+        <input type="button" value="=" onclick="calculate()" />
+        <input type="button" value="AC" onclick="clearAll()" />
+
+      </div>
+</div>
+
+ 
+<div class="icons">
+  
+  <img  src="img/calculator.png"/>
+  <p>function eval( ). <br/>By
+    <a href="https://www.instagram.com/noleebh/" target="_blank">
+      NoleeBH
+    </a>
+  </p>
+
+  <a href="https://noleebh.github.io/basic_calculator/" target="_blank">
+    <img  src="img/github.png"/>
+   </a>     
     </div>
-    <div id="numeros">
-      <input type="button" value="1" onclick="ingresar(1)">
-      <input type="button" value="2" onclick="ingresar(2)">
-      <input type="button" value="3" onclick="ingresar(3)">
-      <input type="button" value="4" onclick="ingresar(4)">
-      <input type="button" value="5" onclick="ingresar(5)">
-      <input type="button" value="6" onclick="ingresar(6)">
-      <input type="button" value="7" onclick="ingresar(7)">
-      <input type="button" value="8" onclick="ingresar(8)">
-      <input type="button" value="9" onclick="ingresar(9)">
-      <input type="button" value="0" onclick="ingresar(0)">
-    </div>
-    <div id="operadores">
-      <input type="button" value="+" onclick="operador1('+')">
-      <input type="button" value="-" onclick="operador1('-')">
-      <input type="button" value="*" onclick="operador1('*')">
-      <input type="button" value="/" onclick="operador1('/')">
-      <input type="button" value="(" onclick="parentesis1('(')">
-      <input type="button" value=")" onclick="parentesis1(')')">
-
-      <!--<input type="button" value="^" onclick="ingresar('^')">
-      <input type="button" value="√" onclick="ingresar('√')">-->
-      <input type="button" value="." onclick="punto('.')">
-      <input type="button" value="=" onclick="calcular()">
-      <input type="button" value="C" onclick="limpiar()">
-      <input type="button" value="←" onclick="borrarUno()">
-
-
-
-    </div>
-    </form>
-</body>
-<script src="app.js"></script>
+  </body>
+  <script src="js/app.js"></script>
 </html>

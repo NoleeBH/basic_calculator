@@ -38,7 +38,6 @@ const mathematicalOperator = operator=> {
   }
 
   if(equation===""){
-    console.log("if 2");
 
     if(operator!=="*"&&operator!=="/"){
       console.log("if 3");
@@ -48,14 +47,12 @@ const mathematicalOperator = operator=> {
     }
   }else{
     if(lastString==="("&&operator!=="*"&&operator!=="/"){
-      console.log("if 4");
 
       document.getElementById('equation-html').value += operator;
       resultExist = false;
 
     }else{
       if(lastString!=="+"&&lastString!=="-"&&lastString!=="*"&&lastString!=="/"&&lastString!=="("&&operator!=="*"&&operator!=="/"){
-        console.log("if 5");
 
         document.getElementById('equation-html').value += operator;
 
@@ -63,7 +60,6 @@ const mathematicalOperator = operator=> {
         resultExist = false;
       }
       if(operator!=='+'&&operator!=='-'&&lastString!=="+"&&lastString!=="-"&&lastString!=="*"&&lastString!=="/"&&lastString!=="("&&result===""){
-        console.log("if 6");
         document.getElementById('equation-html').value += operator;
         pointExist=false;
         resultExist = false;

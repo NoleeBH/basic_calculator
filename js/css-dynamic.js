@@ -1,4 +1,9 @@
 
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./js/sw.js')
+      .then(reg => console.log('Successful SW registration', reg))
+      .catch(err => console.warn('Error registering sw', err))
+  }
 colorBody = fondoColor => document.body.style.backgroundColor = fondoColor;
 
 colorDiv = fondoColor => {

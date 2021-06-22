@@ -2,6 +2,7 @@ var resultExist = false;
 var operatorExist = false;
 var pointExist=false;
 var numberParenthesis = 0;
+var pressedCE = false;
 
 const openParenthesis = parenthesis=>{
 document.getElementById('menssage-parenthesis').innerHTML=`open parenthesis: ${parenthesis}`;
@@ -11,8 +12,9 @@ openParenthesis(numberParenthesis);
 
 const enterNumber = enteredNumber => {
   if(resultExist){
-    clearAll();
-    document.getElementById('equation-html').value += enteredNumber;
+    document.getElementById('equation-html').value = enteredNumber;
+    document.getElementById('result-html').value = "";
+
     resultExist = false;
   }else
   document.getElementById('equation-html').value += enteredNumber;
@@ -92,6 +94,7 @@ const calculate = ()=> {
   resultExist = true;
   pointExist=false;
   savingResult(equation,result);
+  pressedCE=false;
 
 }
 
@@ -100,6 +103,8 @@ const clearAll =()=> {
   document.getElementById('result-html').value='';
   numberParenthesis=0;
   openParenthesis(numberParenthesis);
+  pressedCE=true;
+  console.log(pressedCE);
 
 }
 
@@ -121,18 +126,25 @@ const deleteOne =()=> {
   document.getElementById('equation-html').value=document.getElementById('equation-html').value.slice(0,-1);
 }
 
+const registerResult = [
+  {equation:'none',solution:'none'},
+  {equation:'none',solution: "none"}
+]
 const previouResult =()=>{
-  let numberArray = registerResult.length-2;
-  document.getElementById('result-html').value = registerResult[numberArray].solution;
-  document.getElementById('equation-html').value = registerResult[numberArray].equation;
+  let numberArray = registerResult.length;
+
+  if(pressedCE){
+    document.getElementById('result-html').value = registerResult[numberArray-1].solution;
+    document.getElementById('equation-html').value = registerResult[numberArray-1].equation;
+  }else{
 
 
+  document.getElementById('result-html').value = registerResult[numberArray-2].solution;
+  document.getElementById('equation-html').value = registerResult[numberArray-2].equation;
+}
 }
 
-const registerResult = [
-  {equation:'0',solution:'0'},
-  {equation:'0',solution: "0"}
-]
+
 
 const savingResult = (equation,solution)=>{
 

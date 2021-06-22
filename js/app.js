@@ -23,33 +23,67 @@ const enterNumber = enteredNumber => {
 }
 
 const mathematicalOperator = operator=> {
-  const result =document.getElementById('equation-html').value;
-  const lastString = result.slice(-1);
+  
+  const equation =document.getElementById('equation-html').value;
+  const result =document.getElementById('result-html').value;
 
-  if(result===""){
+  const lastString = equation.slice(-1);
+
+  if(resultExist&&operator!=="/"&&operator!=="*"){
+    console.log("if 1");
+
+    document.getElementById('equation-html').value  = "";
+    document.getElementById('result-html').value  = "";
+    resultExist=false;
+  }
+
+  if(equation===""){
+    console.log("if 2");
+
     if(operator!=="*"&&operator!=="/"){
-      document.getElementById('equation-html').value += operator;
+      console.log("if 3");
+
+      document.getElementById('equation-html').value  += operator;
+
     }
   }else{
     if(lastString==="("&&operator!=="*"&&operator!=="/"){
+      console.log("if 4");
+
       document.getElementById('equation-html').value += operator;
       resultExist = false;
 
     }else{
-      if(lastString!=="+"&&lastString!=="-"&&lastString!=="*"&&lastString!=="/"&&lastString!=="("){
+      if(lastString!=="+"&&lastString!=="-"&&lastString!=="*"&&lastString!=="/"&&lastString!=="("&&operator!=="*"&&operator!=="/"){
+        console.log("if 5");
+
+        document.getElementById('equation-html').value += operator;
+
+        pointExist=false;
+        resultExist = false;
+      }
+      if(operator!=='+'&&operator!=='-'&&lastString!=="+"&&lastString!=="-"&&lastString!=="*"&&lastString!=="/"&&lastString!=="("&&result===""){
+        console.log("if 6");
         document.getElementById('equation-html').value += operator;
         pointExist=false;
         resultExist = false;
       }
+
+
     }
   }
 }
 
 const parenthesis = parenthesis =>{
-  const result =document.getElementById('equation-html').value;
-  const lastString = result.slice(-1);
+  if(resultExist){
+    document.getElementById('equation-html').value = "";
+    document.getElementById('result-html').value = "";
+    resultExist = false;
+  }
+  const equation =document.getElementById('equation-html').value;
+  const lastString = equation.slice(-1);
 
-  if(result===""&&parenthesis!==")"){
+  if(equation===""&&parenthesis!==")"){
     document.getElementById('equation-html').value += parenthesis;
     numberParenthesis+=1;
     openParenthesis(numberParenthesis);
@@ -64,7 +98,7 @@ const parenthesis = parenthesis =>{
 
       }
     }else{//parenthesis=")"
-      if(result!==""&&numberParenthesis>0&&lastString!=="("&&lastString!=='+'&&lastString!=='-'&&lastString!=='*'&&lastString!=='/'&&lastString!=='.'){
+      if(equation!==""&&numberParenthesis>0&&lastString!=="("&&lastString!=='+'&&lastString!=='-'&&lastString!=='*'&&lastString!=='/'&&lastString!=='.'){
         document.getElementById('equation-html').value += parenthesis;
         numberParenthesis-=1;
         openParenthesis(numberParenthesis);
@@ -104,7 +138,8 @@ const clearAll =()=> {
   numberParenthesis=0;
   openParenthesis(numberParenthesis);
   pressedCE=true;
-  console.log(pressedCE);
+  pointExist=false;
+  operatorExist = false;
 
 }
 
@@ -136,15 +171,10 @@ const previouResult =()=>{
   if(pressedCE){
     document.getElementById('result-html').value = registerResult[numberArray-1].solution;
     document.getElementById('equation-html').value = registerResult[numberArray-1].equation;
-  }else{
-
-
+  }else
   document.getElementById('result-html').value = registerResult[numberArray-2].solution;
   document.getElementById('equation-html').value = registerResult[numberArray-2].equation;
 }
-}
-
-
 
 const savingResult = (equation,solution)=>{
 

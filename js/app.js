@@ -30,7 +30,6 @@ const mathematicalOperator = operator=> {
   const lastString = equation.slice(-1);
 
   if(resultExist&&operator!=="/"&&operator!=="*"){
-    console.log("if 1");
 
     document.getElementById('equation-html').value  = "";
     document.getElementById('result-html').value  = "";
@@ -40,7 +39,6 @@ const mathematicalOperator = operator=> {
   if(equation===""){
 
     if(operator!=="*"&&operator!=="/"){
-      console.log("if 3");
 
       document.getElementById('equation-html').value  += operator;
 

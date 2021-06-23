@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Calculator-Calculadora</title>
     <meta name="description" content="Bienvenidos a #Calculator-NoleeBH, una calculadora con la funcion eval() de javascript :)">
 
@@ -33,13 +33,16 @@
   </div>
     <h1 id="title">Calculator</h1>
     <div id="calculator">
+      <div id="screen-previous">
         <div class="screen">
-        <input disabled type="textfield" id="equation-html" value="" />
-
-        <input type="button" id="button-previous" value="↶" onclick="previouResult()" /> 
-        <input disabled type="textfield" id="result-html" value="" />
-     
+          <input disabled type="textfield" id="equation-html" value="" />
+          <input disabled type="textfield" id="result-html" value="" />     
+        </div>
+        <div id="previous">
+          <input type="button" id="button-previous" value="↶" onclick="previouResult()" /> 
+        </div>
       </div>
+
       <label id="menssage-parenthesis"></label>
       <div class="wrapper-keyboard">
         

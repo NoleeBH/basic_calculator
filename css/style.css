@@ -41,16 +41,32 @@ h1{
   border-radius: 4%;
 }
 
+#screen-previous{
+  width: 100%;
+  max-width: 400px;
+  display: inline-block;
+  margin: 0px;
+
+}
 .screen{
-  width: 95%;
-  max-width: 390px;
+  width: 85%;
+  max-width: 349px;
   margin: auto;
   height: auto;
-  display: inline-block;
+  float: left;
+  padding-left: 2%;
+  padding-right: 2%;
 }
+#previous{
+  height: 50px;
+  width: 10%;
+  max-width: 39px;
+  padding-right: 1%;
+  float: right ;
 
+}
 input[type=textfield] {
-  width: 80%;
+  width: 90%;
   max-width: 349px;
   font-size: 25px;
   border: 1px solid #5a5858;
@@ -59,6 +75,7 @@ input[type=textfield] {
   background: #f0eeee;
   height: 30px;
   font-weight: bold;
+  float: left;
 }
 
 #equation-html{
@@ -74,11 +91,11 @@ input[type=textfield] {
 }
 
 #button-previous{
-  float: right;
-  height: 50px;
-  width: 14%;
-  max-width: 40px;
+  margin: auto;
+  height: 90%;
+  max-width: 5  0px;
   padding: 0px;
+
 }
 
 #menssage-parenthesis{

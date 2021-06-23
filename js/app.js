@@ -25,11 +25,13 @@ const enterNumber = enteredNumber => {
 const mathematicalOperator = operator=> {
   
   const equation =document.getElementById('equation-html').value;
-  const result =document.getElementById('result-html').value;
+  //const result =document.getElementById('result-html').value;
+  document.getElementById('result-html').value = "";
 
   const lastString = equation.slice(-1);
 
   if(resultExist&&operator!=="/"&&operator!=="*"){
+    console.log("if 1")
 
     document.getElementById('equation-html').value  = "";
     document.getElementById('result-html').value  = "";
@@ -37,27 +39,31 @@ const mathematicalOperator = operator=> {
   }
 
   if(equation===""){
+    console.log("if 2")
 
     if(operator!=="*"&&operator!=="/"){
+      console.log("if 3")
 
       document.getElementById('equation-html').value  += operator;
 
     }
   }else{
     if(lastString==="("&&operator!=="*"&&operator!=="/"){
-
+    console.log("if 4")
       document.getElementById('equation-html').value += operator;
       resultExist = false;
 
     }else{
       if(lastString!=="+"&&lastString!=="-"&&lastString!=="*"&&lastString!=="/"&&lastString!=="("&&operator!=="*"&&operator!=="/"){
-
+        console.log("if 5")
         document.getElementById('equation-html').value += operator;
 
         pointExist=false;
         resultExist = false;
       }
-      if(operator!=='+'&&operator!=='-'&&lastString!=="+"&&lastString!=="-"&&lastString!=="*"&&lastString!=="/"&&lastString!=="("&&result===""){
+      if(operator!=='+'&&operator!=='-'&&lastString!=="+"&&lastString!=="-"&&lastString!=="*"&&lastString!=="/"&&lastString!=="("){//&&result===""){
+        console.log("if 6")
+
         document.getElementById('equation-html').value += operator;
         pointExist=false;
         resultExist = false;
@@ -104,11 +110,38 @@ const parenthesis = parenthesis =>{
 }
 
 const enterPoint = point =>{
+
   if(resultExist){
     clearAll();
     resultExist = false;
   }
+/////
+
+let equation = document.getElementById('equation-html').value;
+let equationLenngth = equation.length;
+
+let iterator=1;
+ do{
+   console.log("ee");
+  let lastString = equation.slice(-iterator,equationLenngth)
+  if(lastString=="."){
+    pointExist=true;
+    break;
+  }
+  if(lastString=='+'||lastString=='-'||lastString=='/'||lastString=='*'){
+    break;
+  }
+  iterator+=1;
+  equationLenngth-=1;
+
+}while(equationLenngth!==0)
+
+
+////
+console.log(pointExist);
+console.log(!pointExist+" valor de punto");
   if(!pointExist){
+    console.log("jj");
     document.getElementById('equation-html').value += point;
     pointExist=true;
   }
@@ -138,6 +171,12 @@ const clearAll =()=> {
 }
 
 const deleteOne =()=> {
+
+  if(resultExist){
+    resultExist=false;
+    document.getElementById('result-html').value="";
+
+  }
   lastString = document.getElementById('equation-html').value.slice(-1);
   if(lastString==="("){
     numberParenthesis-=1;
@@ -156,8 +195,8 @@ const deleteOne =()=> {
 }
 
 const registerResult = [
-  {equation:'none',solution:'none'},
-  {equation:'none',solution: "none"}
+  {equation:'0',solution:'0'},
+  {equation:'0',solution: "0"}
 ]
 const previouResult =()=>{
   let numberArray = registerResult.length;
@@ -165,9 +204,10 @@ const previouResult =()=>{
   if(pressedCE){
     document.getElementById('result-html').value = registerResult[numberArray-1].solution;
     document.getElementById('equation-html').value = registerResult[numberArray-1].equation;
-  }else
+  }else{
   document.getElementById('result-html').value = registerResult[numberArray-2].solution;
   document.getElementById('equation-html').value = registerResult[numberArray-2].equation;
+}
 }
 
 const savingResult = (equation,solution)=>{
@@ -176,3 +216,5 @@ const savingResult = (equation,solution)=>{
   registerResult.push({equation:equation,solution:solution});
 
 }
+
+
